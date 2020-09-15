@@ -35,11 +35,8 @@ class ImageController extends Controller
     	$image->description = $description;
 
     	if($image_path){
-    		// Asignar nombre unico con el timestamp actual como prefijo
     		$image_path_name = time() . $image_path->getClientOriginalName();
-    		// Guardar en la carpeta (storage/app/user)
     		Storage::disk('images')->put($image_path_name, File::get($image_path));
-    		// Seteo el nombre de la imagen en el objeto
     		$image->image_path = $image_path_name;
     	}
 
@@ -71,24 +68,20 @@ class ImageController extends Controller
         $likes = Like::where('image_id', $id)->get();
 
         if($user && $image && ($image->user_id == $user->id)){
-            // Borra comentarios asociados
             if($comments && count($comments) > 0){
                 foreach($comments as $comment){
                     $comment->delete();
                 }
             }
-            // Borra likes asociados
             if($likes && count($likes) > 0){
                 foreach($likes as $like){
                     $like->delete();
                 }
             }
-            // Elimina fichero de imagen
             Storage::disk('images')->delete($image->image_path);
-            //Elimina registro de imagen
             $image->delete();
 
-            $message = array('message' => 'La imagen se ha borrado correctamente');
+            $message = array('message' => 'Image Deleted');
         } else{
             $message = array('message' => 'La imagen no se ha borrado');
         }
@@ -122,11 +115,8 @@ class ImageController extends Controller
         $image->description = $description;
 
         if($image_path){
-            // Asignar nombre unico con el timestamp actual como prefijo
             $image_path_name = time() . $image_path->getClientOriginalName();
-            // Guardar en la carpeta (storage/app/user)
             Storage::disk('images')->put($image_path_name, File::get($image_path));
-            // Seteo el nombre de la imagen en el objeto
             $image->image_path = $image_path_name;
         }
 

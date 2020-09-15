@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Subir Nueva Imagen
+                    Upload Image
                 </div>
                 <div class="card-body">
                     <form action="{{ route('image.save') }}" method="POST" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror    
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -32,12 +32,12 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror 
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-3">
-                                <input type="submit" class="btn btn-primary" value="Subir Imagen" />
+                                <input type="submit" class="btn btn-primary" value="Save Image" />
                             </div>
                         </div>
                     </form>

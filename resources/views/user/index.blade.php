@@ -12,7 +12,7 @@
                         <input type="text" id="search" class="form-control" />
                     </div>
                     <div class="form-group-col btn-search">
-                        <input type="submit" value="Buscar" class="btn btn-success" />
+                        <input type="submit" value="Search" class="btn btn-success" />
                     </div>
                 </div>
             </form>
@@ -28,8 +28,8 @@
                     <div class="user-info">
                         <h2>{{ '@' . $user->nick }}</h2>
                         <h3>{{ $user->name . ' ' .  $user->surname }}</h3>
-                        <p>{{ 'Se unio: ' . \FormatTime::LongTimeFilter($user->created_at) }}</p>
-                        <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="btn btn-success">Ver Perfil</a>
+                        <p>{{ 'Joined: ' . \FormatTime::LongTimeFilter($user->created_at) }}</p>
+                        <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="btn btn-success">View Profile</a>
                     </div>
                 </div>
             @endforeach

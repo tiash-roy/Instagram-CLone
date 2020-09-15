@@ -42,7 +42,7 @@ class LikeController extends Controller
 	    	]);
     	} else{
     		return response()->json([
-    			'message' => 'El like ya existe'
+    			'message' => 'Liked'
     		]);
     	}
     }
@@ -59,12 +59,12 @@ class LikeController extends Controller
 
 	    	return response()->json([
 	    		'like' => $like,
-	    		'message' => 'Dislike correcto'
+	    		'message' => 'Disliked'
 	    	]);
     	} else{
     		return response()->json([
-    			'message' => 'El like no existe'
+    			'message' => 'Already Disliked'
     		]);
     	}
-    }     
+    }
 }

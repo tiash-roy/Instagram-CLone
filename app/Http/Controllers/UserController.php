@@ -30,7 +30,7 @@ class UserController extends Controller
             'users' => $users
         ]);
     }
-    
+
     public function config(){
     	return view('user.config');
     }
@@ -55,15 +55,13 @@ class UserController extends Controller
     	$user->surname = $surname;
     	$user->nick = $nick;
     	$user->email = $email;
-
     	// Subir la imagen
     	$image_path = $request->file('image_path');
     	if($image_path){
-    		// Asignar nombre unico con el timestamp actual como prefijo
+
     		$image_path_name = time() . $image_path->getClientOriginalName();
-    		// Guardar en la carpeta (storage/app/user)
+
     		Storage::disk('users')->put($image_path_name, File::get($image_path));
-    		// Seteo el nombre de la imagen en el objeto
     		$user->image = $image_path_name;
     	}
 
