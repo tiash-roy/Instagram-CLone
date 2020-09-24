@@ -20,6 +20,7 @@ class InstagramTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs('auth.login');
     }
+
     public function test_if_user_can_be_added()
     {
         $this->withoutExceptionHandling();
@@ -34,7 +35,74 @@ class InstagramTest extends TestCase
         $this->assertCount(1, User::all());
     }
 
+    public function testRoutes()
+    {
+        $appURL = env('APP_URL');
+
+        $urls = [
+            'http://127.0.0.1:8000/subir-imagen',
+        ];
+
+        echo  PHP_EOL;
+
+        foreach ($urls as $url) {
+            $response = $this->get($url);
+            if((int)$response->status() !== 200){
+                echo  $appURL . $url . ' (FAILED) did not return a 200.';
+                $this->assertTrue(false);
+            } else {
+                echo $appURL . $url . ' (success ?)';
+                $this->assertTrue(true);
+            }
+            echo  PHP_EOL;
+        }
+
+    }
+
+    public function testRoutes1()
+    {
+        $appURL = env('APP_URL');
+
+        $urls = [
+            'http://127.0.0.1:8000/likes',
+        ];
+
+        echo  PHP_EOL;
+
+        foreach ($urls as $url) {
+            $response = $this->get($url);
+            if((int)$response->status() !== 200){
+                echo  $appURL . $url . ' (FAILED) did not return a 200.';
+                $this->assertTrue(true);
+            } else {
+                echo $appURL . $url . ' (success ?)';
+                $this->assertTrue(false);
+            }
+            echo  PHP_EOL;
+        }
+
+    }
+
+    public function testButton() {
+         $this->visit('/http://127.0.0.1:8000/')
+         ->click('Users')
+         ->seePageIs('/usuarios');
+    }
 }
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
 
 
 

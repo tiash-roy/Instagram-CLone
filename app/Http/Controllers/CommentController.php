@@ -44,7 +44,7 @@ class CommentController extends Controller
 
     		return redirect()->route('image.detail', ['id' => $comment->image_id])->with(['message' => 'Comment Deleted']);
     	} else{
-    		return redirect()->route('image.detail', ['id' => $comment->image_id])->with(['message' => 'El comentario no e pudo eliminar']);
+    		return redirect()->route('image.detail', ['id' => $comment->image_id])->with(['message' => 'Comment no longer exists']);
     	}
     }
 }
